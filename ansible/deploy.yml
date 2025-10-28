@@ -1,12 +1,6 @@
 - hosts: localhost
   become: true
   tasks:
-    - name: Ensure Docker is installed (Ubuntu)
-      ansible.builtin.apt:
-        name: docker.io
-        state: present
-        update_cache: yes
-
     - name: Ensure Docker SDK for Python is installed
       ansible.builtin.pip:
         name: docker
@@ -14,14 +8,14 @@
 
     - name: Pull Docker image from Docker Hub
       community.docker.docker_image:
-        name: prinithj/devops-webapp-project:latest   # <-- use your actual Docker Hub repo
+        name: prinithj/devops-webapp-project:latest
         source: pull
 
     - name: Run container from image
       community.docker.docker_container:
         name: devops-app
-        image: prinithj/devops-webapp-project:latest  # <-- same image name
+        image: prinithj/devops-webapp-project:latest
         state: started
+        recreate: true
         ports:
           - "3000:3000"
-    
