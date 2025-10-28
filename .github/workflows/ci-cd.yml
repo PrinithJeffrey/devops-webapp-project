@@ -18,15 +18,15 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.prinith3014 }}
-          password: ${{ secrets.Prinith_132004 }}
+          username: prinith3014 
+          password: Prinith132004
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ secrets.prinith3014 }}/devops-app:latest
+          tags: prinith3014/devops-app:latest
 
       - name: Deploy with Ansible
         uses: dawidd6/action-ansible-playbook@v2
