@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/devops-webapp-project:latest
 
       - name: Deploy with Ansible
         uses: dawidd6/action-ansible-playbook@v2
