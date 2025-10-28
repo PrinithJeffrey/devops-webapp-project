@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+    - name: Ensure Docker is installed
+      ansible.builtin.package:
+        name: docker
+        state: present
+
+    - name: Pull Docker image
+      community.docker.docker_image:
+        name: devops-app
+        source: pull
+
+    - name: Run container
+      community.docker.docker_container:
+        name: devops-app
+        image: devops-app
+        state: started
+        ports:
+          - "3000:3000"
