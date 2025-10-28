@@ -11,7 +11,7 @@ body {
     Arial, sans-serif;
   
   /* Background image with good color palette */
-  background: url('https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg') no-repeat center center;
+  background: url('pexels-rovenimages-com-344613-949587.jpg') no-repeat center center;
   background-size: cover;
   
   /* Flex settings to center the container */
@@ -75,12 +75,14 @@ input[type="text"] {
   color: #333;
   box-sizing: border-box; /* Correct padding calculation */
   
-  /* Lighter glass effect for input */
-  background: rgba(255, 255, 255, 0.4);
+  /* --- UPDATED: Full Glassmorphism Effect for Input --- */
+  background: rgba(255, 255, 255, 0.3); /* Slightly adjusted transparency */
+  backdrop-filter: blur(5px);        /* ADDED: The key "frost" effect */
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   outline: none;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05); /* ADDED: Subtle shadow */
 }
 
 input[type="text"]::placeholder {
@@ -89,6 +91,7 @@ input[type="text"]::placeholder {
 
 input[type="text"]:focus {
   border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.5); /* Make it brighter on focus */
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
@@ -99,7 +102,7 @@ button[type="submit"] {
   font-weight: 700;
   color: white;
   
-  /* Solid color for primary action button */
+  /* Solid color for primary action button (Best for UI) */
   background: linear-gradient(135deg, #66a6ff 0%, #4d94ff 100%);
   border: none;
   border-radius: 12px;
@@ -145,7 +148,6 @@ a:hover {
 }
 
 /* --- Error Message Styling --- */
-/* For this to work, update your EJS */
 .error-message {
   color: #d9534f; /* A strong red */
   font-weight: 600;
