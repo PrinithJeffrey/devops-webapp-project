@@ -4,32 +4,36 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.OPENWEATHER_API_KEY; // store in GitHub secret
+const API_KEY = '52502daed4bdf7e57a4d2bc1ef103bb4'; // Your API key hardcoded for simplicity
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+app.get('/', async (req, res) => {
+  const city = req.query.city;
 
-app.post('/weather', async (req, res) => {
-  const city = req.body.city;
+  if (!city) {
+    // No city specified, just render the form
+    return res.render('index', { weather: null, error: null });
+  }
+
   try {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     const response = await axios.get(url);
     const data = response.data;
-    res.render('result', {
+
+    const weather = {
       city: data.name,
       temp: data.main.temp,
       desc: data.weather[0].description,
       humidity: data.main.humidity,
-      icon: data.weather[0].icon
-    });
+      icon: data.weather[0].icon,
+    };
+
+    res.render('index', { weather, error: null });
   } catch (err) {
-    res.render('result', { city: null, error: "City not found!" });
+    res.render('index', { weather: null, error: "City not found!" });
   }
 });
 

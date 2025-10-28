@@ -5,3 +5,5 @@ git push cmds:
 git add .
 git commit -m "Trigger CI/CD workflow for verification"
 git push origin main
+
+weather_api='52502daed4bdf7e57a4d2bc1ef103bb4'

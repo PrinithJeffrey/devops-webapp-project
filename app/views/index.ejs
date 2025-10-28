@@ -6,11 +6,23 @@
 </head>
 <body>
   <div class="container">
-    <h1>Simple Weather App</h1>
-    <form action="/weather" method="POST">
+    <h1>🌤️ Simple Weather App</h1>
+    <form method="GET" action="/">
       <input type="text" name="city" placeholder="Enter city" required>
       <button type="submit">Get Weather</button>
     </form>
+
+    <% if (error) { %>
+      <h2><%= error %></h2>
+    <% } %>
+
+    <% if (weather) { %>
+      <h2>Weather in <%= weather.city %></h2>
+      <img src="https://openweathermap.org/img/wn/<%= weather.icon %>@2x.png" alt="icon">
+      <p>Temperature: <%= weather.temp %>°C</p>
+      <p>Humidity: <%= weather.humidity %>%</p>
+      <p>Description: <%= weather.desc %></p>
+    <% } %>
   </div>
 </body>
 </html>
