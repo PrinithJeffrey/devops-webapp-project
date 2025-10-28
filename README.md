@@ -1,79 +1,97 @@
-# DevOps Web Application Project
+```markdown
+# DevOps CI/CD Project — Docker · Terraform · Ansible · GitHub Actions · Render
 
 ## Overview
-This project is a simple Node.js and Express web application, automated for CI/CD deployment using Docker, GitHub Actions, Docker Hub, and Render (free tier, no credit card required). It’s designed to demonstrate a full DevOps workflow with infrastructure-as-code and configuration management scaffolding.
+Minimal DevOps pipeline that builds, containerizes, and deploys a Node.js app using GitHub Actions, Docker Hub, Ansible and optional Terraform. Deploy target: Render (free, no credit card).
 
-## Features
-- Node.js + Express backend (easy to extend to MERN)
-- Containerization using Docker
-- Infrastructure provisioning with Terraform (optional/enhanced)
-- Configuration management using Ansible (optional/enhanced)
-- Automated CI/CD pipeline with GitHub Actions
-- Free cloud hosting on Render
-- Docker images stored on Docker Hub
-
-## Project Structure
+## Repo structure
+```
 
 devops-project/
 ├── app/
 │   ├── index.js
-│   ├── package.json
-│   └── package-lock.json
+│   └── package.json
 ├── Dockerfile
 ├── terraform/
 │   └── main.tf
 ├── ansible/
 │   └── deploy.yml
-└── .github/
-    └── workflows/
-        └── ci-cd.yml
+└── .github/workflows/ci-cd.yml
 
+````
 
-## CI/CD Workflow
+## Quick start
+1. Clone:
+```bash
+git clone https://github.com/PrinithJeffrey/devops-project.git
+cd devops-project
+````
 
-1. **Version Control:** Track all code changes in GitHub.
-2. **Build and Push Docker Image:** Automatic Docker image build and push to Docker Hub with every push to main.
-3. **Deployment:** Image is deployed to Render and started as a live web service.
-4. **(Optional) Infrastructure & Config**: Terraform and Ansible files are provided for future infrastructure and configuration automation.
+2. Build & run locally:
 
-## Live Demo
-
-Once deployed, your application will be live at:
-
-```
-https://devops-app.onrender.com
-```
-*(Actual Render URL will differ)*
-
-## How to Use
-
-1. **Clone the repository**
-2. **Edit and extend the app (Node.js/Express)**
-3. **Push changes to the `main` branch**
-4. **Watch CI/CD pipeline build and deploy automatically**
-5. **Visit the Render URL for the running application**
-
-## Tech Stack
-
-- Node.js / Express
-- Docker
-- Docker Hub
-- GitHub Actions
-- Terraform (optional)
-- Ansible (optional)
-- Render
-
-## Author
-
-Prinith Jeffrey
-
----
-
-*For setup instructions, see the workflow and docs in this repository.*
+```bash
+docker build -t devops-app .
+docker run -p 3000:3000 devops-app
+# visit http://localhost:3000
 ```
 
-***
+3. Push to GitHub:
 
-You can copy-paste this file as `README.md` into the root of your project, edit the author or URLs if needed, and then add, commit, and push as described earlier for your workflow.[1]
+```bash
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/PrinithJeffrey/devops-project.git
+git push -u origin main
+```
 
-[1](https://github.com/PrinithJeffrey/devops-webapp-project)
+4. Configure GitHub Secrets (Settings → Secrets → Actions):
+
+* `DOCKER_USERNAME` — Docker Hub username
+* `DOCKER_PASSWORD` — Docker Hub password or token
+
+5. Create Docker Hub repo: `devops-app` (public). GitHub Actions will push `docker.io/PrinithJeffrey/devops-app:latest`.
+
+6. Deploy on Render (Deploy from Docker): image `docker.io/PrinithJeffrey/devops-app`, port `3000`.
+
+## CI/CD summary
+
+* On push to `main`: GitHub Actions builds Docker image, pushes to Docker Hub, then runs Ansible playbook (or triggers cloud deploy).
+* Render pulls the image and serves the app.
+
+## Terraform (optional)
+
+Basic local Docker deployment via Terraform using the Docker provider. Use `terraform init` and `terraform apply` inside `terraform/`.
+
+## Ansible
+
+`ansible/deploy.yml` ensures Docker is present, pulls the image and runs the container:
+
+```bash
+ansible-playbook ansible/deploy.yml
+```
+
+
+## License
+
+MIT License
+
+Copyright (c) 2025 Prinith
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
