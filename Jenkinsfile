@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     echo "Building Docker image..."
-                    bat 'docker build -t weather-app .'
+                    sh 'docker build -t weather-app .'
                 }
             }
         }
@@ -26,9 +26,9 @@ pipeline {
                 dir('terraform') {
                     script {
                         echo "Initializing Terraform..."
-                        bat 'terraform init -upgrade'
+                        sh 'terraform init -upgrade'
                         echo "Applying Terraform..."
-                        bat 'terraform apply -auto-approve'
+                        sh 'terraform apply -auto-approve'
                     }
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying app to Fly.io..."
-                    bat 'flyctl deploy --image weather-app:latest --detach'
+                    sh 'flyctl deploy --image weather-app:latest --detach'
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline complete. Cleaning up...'
-            bat 'docker system prune -f'
+            sh 'docker system prune -f'
         }
     }
 }
