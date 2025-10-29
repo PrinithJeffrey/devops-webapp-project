@@ -1,180 +1,191 @@
 /* --- Global & Background Setup --- */
 html {
-  height: 100%;
+height: 100%;
 }
 
 body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 20px; /* Provides spacing on mobile */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  
-  /* Background image with good color palette */
-  background: url('pexels-rovenimages-com-344613-949587.jpg') no-repeat center center;
-  background-size: cover;
-  
-  /* Flex settings to center the container */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+box-sizing: border-box;
+margin: 0;
+padding: 20px; /* Provides spacing on mobile */
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+Arial, sans-serif;
+
+/* Background image with good color palette */
+background: url('pexels-rovenimages-com-344613-949587.jpg') no-repeat center center;
+background-size: cover;
+background-attachment: fixed; /* Ensures background stays fixed during scroll */
+
+/* Flex settings to center the container */
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
 }
 
 /* --- Glassmorphism Container --- */
 .container {
-  width: 100%;
-  max-width: 450px; /* Max width for the card */
-  padding: 30px;
-  box-sizing: border-box; /* Ensures padding doesn't break layout */
-  text-align: center;
-  
-  /* --- Glassmorphism Effect --- */
-  background: rgba(255, 255, 255, 0.2); /* 1. Transparency */
-  backdrop-filter: blur(10px);        /* 2. Backdrop Blur */
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* 3. Subtle Border */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* 4. Soft Shadow */
-  /* --- End Glassmorphism --- */
+width: 100%;
+max-width: 450px; /* Max width for the card */
+padding: 30px;
+box-sizing: border-box; /* Ensures padding doesn't break layout */
+text-align: center;
+
+/* --- Glassmorphism Effect --- */
+background: rgba(255, 255, 255, 0.2); /* 1. Transparency */
+backdrop-filter: blur(10px); /* 2. Backdrop Blur */
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.3); /* 3. Subtle Border */
+box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* 4. Soft Shadow */
+/* --- End Glassmorphism --- */
 }
 
 /* --- Typography --- */
 h1 {
-  color: #000; /* Changed from #333 */
-  font-size: 2.2rem;
-  margin-top: 0;
-  margin-bottom: 25px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+color: #000; /* Changed from #333 */
+font-size: 2.2rem;
+margin-top: 0;
+margin-bottom: 25px;
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 h2 {
-  color: #000; /* Changed from #333 */
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+color: #000; /* Changed from #333 */
+font-size: 1.8rem;
+margin-bottom: 15px;
 }
 
 p {
-  color: #000; /* Changed from #333 */
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin: 10px 0;
+color: #000; /* Changed from #333 */
+font-size: 1.1rem;
+line-height: 1.5;
+margin: 10px 0;
 }
 
-/* --- Responsive Form Elements --- */
 form {
-  display: flex;
-  flex-direction: column; /* Stacks input and button vertically */
-  gap: 15px; /* Space between input and button */
-  margin-bottom: 20px;
+display: flex;
+flex-direction: column; /* Stacks input and button vertically */
+gap: 15px; /* Space between input and button */
+margin-bottom: 20px;
+padding: 25px;
+
+/* Glassmorphism effect for the form */
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius: 0px; /* Square edges as requested */
+box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"] {
-  width: 100%;
-  padding: 18px 20px;
-  font-size: 1.1rem;
-  color: #000; /* Changed from #333 */
-  box-sizing: border-box; /* Correct padding calculation */
-  
-  /* --- UPDATED: Full Glassmorphism Effect for Input --- */
-  background: rgba(255, 255, 255, 0.3); /* Slightly adjusted transparency */
-  backdrop-filter: blur(5px);        /* ADDED: The key "frost" effect */
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  outline: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05); /* ADDED: Subtle shadow */
+width: 100%;
+padding: 18px 20px;
+font-size: 1.1rem;
+color: #000; /* Changed from #333 /
+box-sizing: border-box; / Correct padding calculation */
+
+/* --- UPDATED: Full Glassmorphism Effect for Input --- */
+background: rgba(255, 255, 255, 0.3); /* Slightly adjusted transparency */
+backdrop-filter: blur(5px); /* ADDED: The key "frost" effect */
+border: 1px solid rgba(255, 255, 255, 0.5);
+border-radius: 0px; /* Square edges as requested */
+outline: none;
+transition: all 0.3s ease;
+box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05); /* ADDED: Subtle shadow */
 }
 
 input[type="text"]::placeholder {
-  color: #333; /* Changed from #555 */
+color: #333; /* Changed from #555 */
 }
 
 input[type="text"]:focus {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.5); /* Make it brighter on focus */
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+border-color: #ffffff;
+background: rgba(255, 255, 255, 0.5); /* Make it brighter on focus */
+box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 button[type="submit"] {
-  width: 100%;
-  padding: 18px 20px; /* Matching input padding */
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: white;
-  
-  /* Solid color for primary action button (Best for UI) */
-  background: linear-gradient(135deg, #66a6ff 0%, #4d94ff 100%);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+width: 100%;
+padding: 18px 20px; /* Matching input padding */
+font-size: 1.1rem;
+font-weight: 700;
+color: white;
+
+/* Solid color for primary action button (Best for UI) */
+background: linear-gradient(135deg, #66a6ff 0%, #4d94ff 100%);
+border: none;
+border-radius: 0px; /* Square edges as requested */
+cursor: pointer;
+outline: none;
+transition: all 0.3s ease;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 button[type="submit"]:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 166, 255, 0.5);
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(102, 166, 255, 0.5);
 }
 
 button[type="submit"]:active {
-  transform: translateY(-1px);
+transform: translateY(-1px);
 }
 
 /* --- Results Page Styling --- */
 img {
-  width: 100px;
-  height: 100px;
-  margin: -10px auto 0;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+width: 100px;
+height: 100px;
+margin: -10px auto 0;
+filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 a {
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 600;
-  color: white;
-  background: #555;
-  padding: 12px 25px;
-  border-radius: 10px;
-  margin-top: 15px;
-  transition: all 0.3s ease;
+display: inline-block;
+text-decoration: none;
+font-weight: 600;
+color: white;
+background: #555;
+padding: 12px 25px;
+border-radius: 10px;
+margin-top: 15px;
+transition: all 0.3s ease;
 }
 
 a:hover {
-  background: #333;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+background: #333;
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Error Message Styling --- */
 .error-message {
-  color: #d9534f; /* A strong red */
-  font-weight: 600;
-  font-size: 1.2rem;
-  background: rgba(255, 218, 218, 0.7);
-  padding: 10px;
-  border-radius: 8px;
+color: #d9534f; /* A strong red */
+font-weight: 600;
+font-size: 1.2rem;
+background: rgba(255, 218, 218, 0.7);
+padding: 10px;
+border-radius: 8px;
 }
 
 /* --- Simple Media Query for Smaller Phones --- */
 @media (max-width: 480px) {
-  .container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  input[type="text"],
-  button[type="submit"] {
-    padding: 16px 18px;
-    font-size: 1rem;
-  }
+.container {
+padding: 20px;
 }
 
+h1 {
+font-size: 1.8rem;
+}
+
+h2 {
+font-size: 1.5rem;
+}
+
+form {
+padding: 20px;
+}
+
+input[type="text"],
+button[type="submit"] {
+padding: 16px 18px;
+font-size: 1rem;
+}
+}
