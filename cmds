@@ -4,6 +4,18 @@ docker run -p 3000:3000 devops-webapp-project
 git push cmds:
 git add .
 git commit -m "Trigger CI/CD workflow for verification"
+git commit -m "UI testing"
 git push origin main
 
 weather_api='52502daed4bdf7e57a4d2bc1ef103bb4'
+
+cloud server= https://dashboard.render.com/web/srv-d40fhiur433s738bntlg/deploys/dep-d40fpjm3jp1c73eep5kg
+
+Output = https://devops-webapp-project.onrender.com
+
+setx FLY_API_TOKEN "fm2_lJPECAAAAAAACrgkxBBFLj4Dvuu/qhX+3gCYPq/wwrVodHRwczovL2FwaS5mbHkuaW8vdjGUAJLOABQ8WR8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDzwmmFQIjNxcbdv2BrDxNQrWrGhkL9JxSlvIDlw0R5rJkZJXrDyJNLSRh8DIfpEtkVPMgWxJf5T9H2qqA/ETvCxzm5MuRoO3KVbJpnfJzUHA15/5fTISo/SdfOCJ/JxGlGow43ru2T3zdnC4AMgVw77E+NdCqO4gyRRsDbzS84JKSyfMfh65nnitZmI4cQgwxXlvfr5lnnR87OJXbsLs187eumyjVLfVrkzfO/6bZo=,fm2_lJPETvCxzm5MuRoO3KVbJpnfJzUHA15/5fTISo/SdfOCJ/JxGlGow43ru2T3zdnC4AMgVw77E+NdCqO4gyRRsDbzS84JKSyfMfh65nnitZmI4cQQsfRI8OrDJxIW8mgVukGGYMO5aHR0cHM6Ly9hcGkuZmx5LmlvL2FhYS92MZgEks5pAc5IzmkB0L4XzgATcCoKkc4AE3AqDMQQIBFv9zhpalfO4drLts14Z8QgYnlfg/m+yZNJTX5lW7mtg405yf5cw3sEyOQl4NRed+Y=,fo1_iboSjp2V1qDeTeIsJABgo4G2EnJndHbTr2uIeWogQUI"
+
+jenkins admin password= f9629bd8297c4e1f98248760421efbfc
+
+start jenkins:
+docker start jenkins
