@@ -14,7 +14,8 @@
     - name: Verify container is running
       community.docker.docker_container_info:
         name: devops-app
-        register: container_info
+      register: container_info   # ✅ move register to this level
 
-    - debug:
+    - name: Display container status
+      debug:
         var: container_info.container.State.Status
