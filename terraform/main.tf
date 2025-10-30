@@ -1,31 +1,27 @@
 terraform {
   required_providers {
-    fly = {
-      source  = "fly-apps/fly"
-      version = ">= 0.0.20"
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 2.19"
     }
   }
 }
 
-provider "fly" {
-  # Reads your Fly API token from the environment variable FLY_API_TOKEN
-  # You can set it in PowerShell like this:
-  # setx FLY_API_TOKEN "your_fly_token_here"
+provider "docker" {}
+
+resource "docker_image" "app" {
+  name         = "devops-app:latest"
+  build {
+    context = "../"
+    dockerfile = "Dockerfile"
+  }
 }
 
-resource "random_id" "suffix" {
-  byte_length = 4
-}
-
-resource "fly_app" "weather" {
-  name   = "weather-app-${random_id.suffix.hex}"
-  org    = var.org
-}
-
-output "fly_app_name" {
-  value = fly_app.weather.name
-}
-
-output "fly_app_hostname" {
-  value = "${fly_app.weather.name}.fly.dev"
+resource "docker_container" "app" {
+  image = docker_image.app.latest
+  name  = "devops-app-container"
+  ports {
+    internal = 3000
+    external = 3000
+  }
 }
