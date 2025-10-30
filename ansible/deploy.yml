@@ -11,11 +11,10 @@
         name: prinithj/devops-webapp-project:latest
         source: pull
 
-    - name: Run container from image
-      community.docker.docker_container:
+    - name: Verify container is running
+      community.docker.docker_container_info:
         name: devops-app
-        image: prinithj/devops-webapp-project:latest
-        state: started
-        recreate: true
-        ports:
-          - "3000:3000"
+        register: container_info
+
+    - debug:
+        var: container_info.container.State.Status
